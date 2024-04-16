@@ -143,16 +143,19 @@ function ESP:Get_Tool(Player)
     if self.Overrides.Get_Tool ~= nil then
         return self.Overrides.Get_Tool(Player)
     end
+    if Player.equippedItem then
     for i,v in pairs(Player.equippedItem) do
         if v.amt ~= nil then
           if v.ammo ~= nil then
-            return v.type.." ("..tostring(v.ammo)..")"
+            return tostring(v.type.." ("..tostring(v.ammo)..")")
           else
-            return v.type.." (x"..tostring(v.amt)..")"
+            return tostring(v.type.." (x"..tostring(v.amt)..")")
           end
         else
-        return v.type
+        return tostring(v.type)
         end
+    end
+    else
     end
     return "Hands"
 end
