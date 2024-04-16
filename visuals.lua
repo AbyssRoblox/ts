@@ -144,8 +144,8 @@ function ESP:Get_Tool(Player)
         return self.Overrides.Get_Tool(Player)
     end
     for i,v in pairs(Player.equippedItem) do
-        if v.amt then
-          if v.ammo then
+        if v.amt ~= nil then
+          if v.ammo ~= nil then
             return v.type.." ("..tostring(v.ammo)..")"
           else
             return v.type.." (x"..tostring(v.amt)..")"
