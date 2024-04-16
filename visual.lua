@@ -144,13 +144,18 @@ function ESP:Get_Tool(Player)
         return self.Overrides.Get_Tool(Player)
     end
     if Player.equippedItem then
-    for i,v in pairs(Player.equippedItem) do
-        return tostring(v.type)
+        if Player.equippedItem.amt then
+            if Player.equippedItem.ammo then
+                return tostring(Player.equippedItem.type.." ("..Player.equippedItem.ammo..")")
+            end
+            return tostring(Player.equippedItem.type.." (x"..Player.equippedItem.amt..")")
+        else
+            return tostring(Player.equippedItem.type)
         end
     else
         return "Hands"
     end
-    
+    return "Hands"
 end
 
 function ESP:Get_Health(Player)
