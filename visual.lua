@@ -147,8 +147,10 @@ function ESP:Get_Tool(Player)
     for i,v in pairs(Player.equippedItem) do
         return tostring(v.type)
         end
+    else
+        return "Hands"
     end
-    return "Hands"
+    
 end
 
 function ESP:Get_Health(Player)
