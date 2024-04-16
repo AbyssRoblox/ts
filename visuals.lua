@@ -161,13 +161,6 @@ function ESP:Get_Health(Player)
    if self.Overrides.Get_Character ~= nil then
         return self.Overrides.Get_Health(Player)
     end
-    local Character = self:Get_Character(Player)
-    if Character then
-        local Humanoid = Character:FindFirstChildOfClass("Humanoid")
-        if Humanoid then
-            return Humanoid.Health
-        end
-    end
     return 100
 end
 
@@ -263,8 +256,8 @@ do -- Player Metatable
                 Image.Visible = false
                 return
             end
-            local Humanoid = Character:FindFirstChildOfClass("Humanoid")
-            local Current_Health, Health_Maximum = ESP:Get_Health(self.Player), Humanoid.MaxHealth
+           
+            local Current_Health, Health_Maximum = ESP:Get_Health(self.Player), 100
             if Head and HumanoidRootPart and Current_Health > 0 then
                 local Dimensions = Framework:Get_Bounding_Vectors(HumanoidRootPart)
                 local HRP_Position, On_Screen = Camera:WorldToViewportPoint(HumanoidRootPart.Position)
